@@ -62,38 +62,6 @@ void addPlayerScore()
     }
 }
 
-// Function to add a player's score
-// void addPlayerScore()
-// {
-//     ofstream file("scores.txt", ios::app);
-//     if (!file)
-//     {
-//         cout << "\033[1;31mError opening file!\033[0m" << endl;
-//         return;
-//     }
-
-//     string playerName;
-//     int jerseyNumber;
-//     int score;
-
-//     cout << "\033[1;36m\n----------------------------------------------\033[0m" << endl;
-//     cout << "\033[1;36m               ADD PLAYER'S SCORE              \033[0m" << endl;
-//     cout << "\033[1;36m----------------------------------------------\033[0m" << endl;
-
-//     cout << "\033[1;33mEnter player name: \033[0m";
-//     getline(cin >> ws, playerName);
-//     cout << "\033[1;33mEnter jersey number: \033[0m";
-//     cin >> jerseyNumber;
-//     cout << "\033[1;33mEnter score: \033[0m";
-//     cin >> score;
-
-//     file << playerName << "," << jerseyNumber << "," << score << endl;
-//     file.close();
-
-//     cout << "\033[1;32m\nPlayer score added successfully!\033[0m" << endl;
-// }
-
-// Function to search for a player's score
 void searchPlayerScore()
 {
     ifstream file("scores.txt");
@@ -116,13 +84,14 @@ void searchPlayerScore()
 
     while (getline(file, line))
     {
-        string playerName, score;
-        int currentJerseyNumber;
+        string playerName, jersey, score;
 
         stringstream ss(line);
         getline(ss, playerName, ',');
+        getline(ss, jersey, ',');
         getline(ss, score, ',');
-        currentJerseyNumber = stoi(score);
+
+        int currentJerseyNumber = stoi(jersey);
 
         if (currentJerseyNumber == jerseyNumber)
         {
